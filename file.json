@@ -1,0 +1,112 @@
+{
+  "User.d63d44da-c763-4b6c-b1fe-70a4cd1e831c": {
+    "id": "d63d44da-c763-4b6c-b1fe-70a4cd1e831c",
+    "created_at": "2024-05-05T10:10:09.128189",
+    "updated_at": "2024-05-05T10:10:09.128239",
+    "email": "user1@user1.user1",
+    "password": "user1",
+    "first_name": "User 1 first",
+    "last_name": "User 1 last",
+    "__class__": "User"
+  },
+  "User.80ca7d54-c87a-4ef1-bb51-2d205fc83011": {
+    "id": "80ca7d54-c87a-4ef1-bb51-2d205fc83011",
+    "created_at": "2024-05-05T10:10:10.144431",
+    "updated_at": "2024-05-05T10:10:10.144470",
+    "email": "user2@user2.user2",
+    "password": "user2",
+    "first_name": "User 2 first",
+    "last_name": "User 2 last",
+    "__class__": "User"
+  },
+  "Place.72433bfa-0e5f-4cbf-8370-1761c7f5cc50": {
+    "id": "72433bfa-0e5f-4cbf-8370-1761c7f5cc50",
+    "created_at": "2024-05-05T10:10:13.718017",
+    "updated_at": "2024-05-05T10:10:13.718064",
+    "city_id": "ad883274-b263-4894-983c-8e3205410660",
+    "user_id": "d63d44da-c763-4b6c-b1fe-70a4cd1e831c",
+    "user": {
+      "email": "user1@user1.user1",
+      "password": "user1",
+      "first_name": "User 1 first",
+      "last_name": "User 1 last"
+    },
+    "name": "Hotel 1",
+    "description": "",
+    "number_rooms": 0,
+    "number_bathrooms": 0,
+    "max_guest": 0,
+    "price_by_night": 0,
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "amenity_ids": ["05b14cdd-6394-4b2d-8887-79fe9b41068d"],
+    "__class__": "Place"
+  },
+  "Place.379fb165-45dd-4520-9f51-29ae19f972ba": {
+    "id": "379fb165-45dd-4520-9f51-29ae19f972ba",
+    "created_at": "2024-05-05T10:10:14.636779",
+    "updated_at": "2024-05-05T10:10:14.636839",
+    "city_id": "bb06efc8-26ce-450c-8f4e-a92801fb3c8d",
+    "user_id": "80ca7d54-c87a-4ef1-bb51-2d205fc83011",
+    "user": {
+      "email": "user2@user2.user2",
+      "password": "user2",
+      "first_name": "User 2 first",
+      "last_name": "User 2 last"
+    },
+    "name": "Hotel 2",
+    "description": "",
+    "number_rooms": 0,
+    "number_bathrooms": 0,
+    "max_guest": 0,
+    "price_by_night": 0,
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "amenity_ids": ["2fe7b47f-912a-4bf9-b4fe-8dc680ce4dc7"],
+    "__class__": "Place"
+  },
+  "Amenity.05b14cdd-6394-4b2d-8887-79fe9b41068d": {
+    "id": "05b14cdd-6394-4b2d-8887-79fe9b41068d",
+    "created_at": "2024-05-05T10:10:21.694811",
+    "updated_at": "2024-05-05T10:10:21.694866",
+    "name": "TV",
+    "__class__": "Amenity"
+  },
+  "Amenity.2fe7b47f-912a-4bf9-b4fe-8dc680ce4dc7": {
+    "id": "2fe7b47f-912a-4bf9-b4fe-8dc680ce4dc7",
+    "created_at": "2024-05-05T10:10:23.149522",
+    "updated_at": "2024-05-05T10:10:23.149574",
+    "name": "Wifi",
+    "__class__": "Amenity"
+  },
+  "State.0e115c64-2a6c-47a1-9284-f58b034bc653": {
+    "id": "0e115c64-2a6c-47a1-9284-f58b034bc653",
+    "created_at": "2024-05-05T10:10:33.611997",
+    "updated_at": "2024-05-05T10:10:33.612038",
+    "name": "Kaf Elsheikh",
+    "__class__": "State"
+  },
+  "State.c24ae04e-eccb-4115-bf96-a616f1a9844b": {
+    "id": "c24ae04e-eccb-4115-bf96-a616f1a9844b",
+    "created_at": "2024-05-05T10:10:34.857700",
+    "updated_at": "2024-05-05T10:10:34.857732",
+    "name": "Cairo",
+    "__class__": "State"
+  },
+  "City.ad883274-b263-4894-983c-8e3205410660": {
+    "id": "ad883274-b263-4894-983c-8e3205410660",
+    "created_at": "2024-05-05T10:10:39.924982",
+    "updated_at": "2024-05-05T10:10:39.925030",
+    "state_id": "c24ae04e-eccb-4115-bf96-a616f1a9844b",
+    "name": "October",
+    "__class__": "City"
+  },
+  "City.bb06efc8-26ce-450c-8f4e-a92801fb3c8d": {
+    "id": "bb06efc8-26ce-450c-8f4e-a92801fb3c8d",
+    "created_at": "2024-05-05T10:10:40.912507",
+    "updated_at": "2024-05-05T10:10:40.912543",
+    "state_id": "0e115c64-2a6c-47a1-9284-f58b034bc653",
+    "name": "Baltim",
+    "__class__": "City"
+  }
+}
