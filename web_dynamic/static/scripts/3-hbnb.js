@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     handleAmenitiesCheckBoxes();
   
     getAppStatus();
-
-    getAppSearch();
   });
   
   function handleAmenitiesCheckBoxes () {
