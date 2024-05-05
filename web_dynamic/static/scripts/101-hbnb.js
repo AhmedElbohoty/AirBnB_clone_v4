@@ -159,13 +159,20 @@ document.addEventListener('DOMContentLoaded', function () {
             .addClass('description')
             .text(place.description);
 
+          // Reviews
           const article = $('<article>').append(
             titleBox,
             information,
-            description
+            description,
+            `<div class="reviews" data-place="${place.id}">
+              <h2 class="reviews-h2"></h2>
+              <ul class="reviews-ul reviews-ul-hide"></ul>
+            </div>`
           );
 
           $('.places').append(article);
+
+          getReviews(place.id);
         });
       },
       error: (error) => console.log(error)
@@ -175,6 +182,64 @@ document.addEventListener('DOMContentLoaded', function () {
   function searchPlacesByAmenities () {
     $('.filters button').on('click', () => {
       getPlaces(amenities, states, cities);
+    });
+  }
+
+  function getReviews (placeId) {
+    const url = `http://0.0.0.0:5001/api/v1/places/${placeId}/reviews`;
+    const dataType = 'json';
+    const headers = {
+      'Content-Type': 'application/json'
+    };
+
+    $.get({
+      url,
+      dataType,
+      headers,
+      success: (data) => {
+        const h2 = $(`.reviews[data-place="${placeId}"] h2`);
+        const ul = $(`.reviews[data-place="${placeId}"] ul`);
+
+        const span = $('<span>').addClass('show-reviews').text('show');
+        h2.text(`${data.length} Reviews `).append(span);
+
+        span.on('click', onClickShow);
+
+        function onClickShow () {
+          if (ul.hasClass('reviews-ul-hide')) {
+            span.text('hide');
+
+            data.forEach((r) => {
+              const url = `http://0.0.0.0:5001/api/v1/users/${r.user_id}`;
+
+              $.get({
+                url,
+                dataType,
+                success: (user) => {
+                  const userName = user.first_name + ' ' + user.last_name;
+                  const date = r.created_at;
+
+                  const li = $('<li>');
+                  const h3 = $('<h3>')
+                    .addClass('review-h3')
+                    .text(`From ${userName} the ${date}`);
+                  const p = $('p').text(r.text);
+
+                  li.append(h3);
+                  li.append(p);
+
+                  ul.append(li);
+                }
+              });
+            });
+          } else {
+            ul.empty();
+            span.text('show');
+          }
+
+          ul.toggleClass('reviews-ul-hide');
+        }
+      }
     });
   }
 });

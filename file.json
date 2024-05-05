@@ -4,7 +4,7 @@
     "created_at": "2024-05-05T10:10:09.128189",
     "updated_at": "2024-05-05T10:10:09.128239",
     "email": "user1@user1.user1",
-    "password": "user1",
+    "password": "24c9e15e52afc47c225b757e7bee1f9d",
     "first_name": "User 1 first",
     "last_name": "User 1 last",
     "__class__": "User"
@@ -14,7 +14,7 @@
     "created_at": "2024-05-05T10:10:10.144431",
     "updated_at": "2024-05-05T10:10:10.144470",
     "email": "user2@user2.user2",
-    "password": "user2",
+    "password": "7e58d63b60197ceb55a1c487989a3720",
     "first_name": "User 2 first",
     "last_name": "User 2 last",
     "__class__": "User"
@@ -158,5 +158,23 @@
       }
     ],
     "__class__": "City"
+  },
+  "Review.a9fa9f9e-bdba-4c89-99bb-45ca68843d09": {
+    "id": "a9fa9f9e-bdba-4c89-99bb-45ca68843d09",
+    "created_at": "2024-05-05T19:38:25.286197",
+    "updated_at": "2024-05-05T19:38:25.286282",
+    "place_id": "72433bfa-0e5f-4cbf-8370-1761c7f5cc50",
+    "user_id": "d63d44da-c763-4b6c-b1fe-70a4cd1e831c",
+    "text": "Review 1",
+    "__class__": "Review"
+  },
+  "Review.fb373b30-04ef-4407-ba2a-024ad2e406f8": {
+    "id": "fb373b30-04ef-4407-ba2a-024ad2e406f8",
+    "created_at": "2024-05-05T19:38:26.968568",
+    "updated_at": "2024-05-05T19:38:26.968597",
+    "place_id": "379fb165-45dd-4520-9f51-29ae19f972ba",
+    "user_id": "80ca7d54-c87a-4ef1-bb51-2d205fc83011",
+    "text": "Review 2",
+    "__class__": "Review"
   }
 }
