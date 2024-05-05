@@ -70,6 +70,7 @@
     "created_at": "2024-05-05T10:10:21.694811",
     "updated_at": "2024-05-05T10:10:21.694866",
     "name": "TV",
+    "place_id": "72433bfa-0e5f-4cbf-8370-1761c7f5cc50",
     "__class__": "Amenity"
   },
   "Amenity.2fe7b47f-912a-4bf9-b4fe-8dc680ce4dc7": {
@@ -77,6 +78,7 @@
     "created_at": "2024-05-05T10:10:23.149522",
     "updated_at": "2024-05-05T10:10:23.149574",
     "name": "Wifi",
+    "place_id": "379fb165-45dd-4520-9f51-29ae19f972ba",
     "__class__": "Amenity"
   },
   "State.0e115c64-2a6c-47a1-9284-f58b034bc653": {
