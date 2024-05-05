@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   // App state
   const amenities = {};
+  const states = {};
+  const cities = {};
 
   // Function calls
   handleAmenitiesCheckBoxes();
+
+  handleStatesCheckBoxes();
+
+  handleCitiesCheckBoxes();
 
   getAppStatus();
 
@@ -12,8 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
   searchPlacesByAmenities();
 
   // Function declaration
+  function getAppStatus() {
+    const apiStatus = $("#api_status");
+    $.getJSON("http://0.0.0.0:5001/api/v1/status/", (data) => {
+      if (data.status === "OK") {
+        apiStatus.addClass("available");
+      } else {
+        apiStatus.removeClass("available");
+      }
+    });
+  }
+
   function handleAmenitiesCheckBoxes() {
-    $(".amenity-checkbox").change(onChange);
+    $(".amenity-checkbox").on("change", onChange);
 
     function onChange(e) {
       const h4 = $(".amenities-h4");
@@ -33,26 +50,65 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function getAppStatus() {
-    const apiStatus = $("#api_status");
-    $.getJSON("http://0.0.0.0:5001/api/v1/status/", (data) => {
-      if (data.status === "OK") {
-        apiStatus.addClass("available");
+  function handleStatesCheckBoxes() {
+    $(".state-checkbox").on("change", onChange);
+
+    function onChange(e) {
+      const h4 = $(".locations-h4");
+
+      const input = e.currentTarget;
+      const id = input.dataset.id;
+      const name = input.dataset.name;
+
+      if (input.checked) {
+        states[id] = name;
       } else {
-        apiStatus.removeClass("available");
+        delete states[id];
       }
-    });
+
+      const text = Object.values(states).sort().join(", ");
+      h4.text(text);
+    }
   }
 
-  function getPlaces(ament = {}) {
+  function handleCitiesCheckBoxes() {
+    $(".city-checkbox").on("change", onChange);
+
+    function onChange(e) {
+      const h4 = $(".locations-h4");
+
+      const input = e.currentTarget;
+      const id = input.dataset.id;
+      const name = input.dataset.name;
+
+      if (input.checked) {
+        cities[id] = name;
+      } else {
+        delete cities[id];
+      }
+
+      const text = Object.values(cities).sort().join(", ");
+      h4.text(text);
+    }
+  }
+
+  function getPlaces(amenities = {}, states = {}, cities = {}) {
     const url = "http://0.0.0.0:5001/api/v1/places_search";
     const dataType = "json";
 
-    const amenitiesIds = Object.values(ament);
-    const data = JSON.stringify({ amenities: amenitiesIds });
+    const amenitiesIds = Object.values(amenities);
+    const statesIds = Object.keys(states);
+    const citiesIds = Object.keys(cities);
+    const data = JSON.stringify({
+      amenities: amenitiesIds,
+      states: statesIds,
+      cities: citiesIds,
+    });
     const headers = {
       "Content-Type": "application/json",
     };
+
+    console.log(data);
 
     $.post({
       url,
@@ -120,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function searchPlacesByAmenities() {
     $(".filters button").on("click", () => {
-      getPlaces(amenities);
+      getPlaces(amenities, states, cities);
     });
   }
 });
